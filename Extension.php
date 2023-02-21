@@ -73,6 +73,16 @@ class Extension extends BaseExtension
                         ],
                     ],
                 ],
+                'smsnotify_new_order_placed' => [
+                    'name' => 'Send an SMS message to location when order placed',
+                    'event' => \Igniter\Cart\AutomationRules\Events\OrderPlaced::class,
+                    'actions' => [
+                        \IgniterLabs\SmsNotify\AutomationRules\Actions\SendSmsNotification::class => [
+                            'template' => 'igniterlabs.smsnotify::_sms.new_order',
+                            'send_to' => 'location',
+                        ],
+                    ],
+                ],
             ],
         ];
     }
